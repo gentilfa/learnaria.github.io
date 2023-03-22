@@ -78,6 +78,9 @@
 		isVisible = !!$panel.is(':visible');
 		$panel.slideToggle({ duration: plugin.options.animationSpeed });
 		
+		$me.attr('aria-expanded',!isVisible);
+		$panel.attr('aria-hidden',isVisible);
+
 		if(plugin.options.autoCollapse) { // collapse all other panels
 			
 			plugin.headers.each(function(i, el) {

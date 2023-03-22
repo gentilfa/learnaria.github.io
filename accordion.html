@@ -17,6 +17,7 @@
 				$(".multiselect").ik_accordion();
 				$(".singleselect").ik_accordion({ 'autoCollapse': true});
 				
+
 			});
 			
 		</script>
@@ -26,21 +27,25 @@
 			<a href="index.html">&larr; Index</a>
 			<h1>Accordion</h1>
 			<h2>autoCollapse = false</h2>
-			<dl class="multiselect">
-				<dt>Accordion panel</dt>
-				<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
-				<dt>Accordion panel</dt>
-				<dd>Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-			</dl>
+			<div role="region" aria-labelledby="Accordion One" aria-multiselectable="true">
+				<dl class="multiselect">
+					<dt role="button" tabindex="0">Accordion panel</dt>
+					<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
+					<dt role="button" tabindex="0">Accordion panel</dt>
+					<dd>Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+				</dl>
+			</div>
 			<h2>autoCollapse = true</h2>
-			<dl class="singleselect">
-				<dt>Accordion panel</dt>
-				<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
-				<dt>Accordion panel</dt>
-				<dd>Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-				<dt>Accordion panel</dt>
-				<dd>Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo. Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
-			</dl>
+			<div role="region" aria-labelledby="Accordion Two" aria-multiselectable="false">
+				<dl class="singleselect">
+					<dt role="button" tabindex="0">Accordion panel</dt>
+					<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo.</dd>
+					<dt role="button" tabindex="0">Accordion panel</dt>
+					<dd>Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+					<dt role="button" tabindex="0">Accordion panel</dt>
+					<dd>Nullam consectetur erat purus, nec molestie metus molestie at. Aliquam lobortis ipsum nec sapien auctor, ut pharetra erat sollicitudin. Ut nulla nunc, suscipit eget ante et, egestas pharetra odio. Sed sed varius massa. Integer sed volutpat leo. Vestibulum feugiat nibh enim, sed accumsan ante cursus sit amet. Nam metus est, rutrum vitae nibh ut, consectetur ultrices lacus. Duis a aliquam tortor, eget viverra elit. Vivamus vitae dui in ex sagittis hendrerit.</dd>
+				</dl>
+			</div>
 		</main>
 	</body>
 </html>
