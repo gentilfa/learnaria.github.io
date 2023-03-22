@@ -34,12 +34,13 @@
 		
 		$elem
 			.attr({
-				'id': id
+				'id': id,
+				'role': 'region',
 			})
 			.addClass('ik_carousel')
-			.on('mouseenter', {'plugin': plugin}, plugin.stopTimer)
-			.on('mouseleave', {'plugin': plugin}, plugin.startTimer)
-		
+			.on('mouseenter focusin', {'plugin': plugin}, plugin.stopTimer)
+			.on('mouseleave focusout', {'plugin': plugin}, plugin.startTimer)
+			
 		$controls = $('<div/>')
 
 			.addClass('ik_controls')
@@ -73,6 +74,16 @@
 				
 				$('<li/>')
 					.on('click', {'plugin': plugin, 'slide': i}, plugin.gotoSlide)
+					.attr('tabindex',0)
+					.keypress(function(e){
+						if(e.key == '' || e.key == 'Spacebar'){
+							e.preventDefault();
+							e['data'] = {};
+							e['data']['plugin'] = plugin;
+							e['data']['slide'] = i;
+							plugin.gotoSlide(e);
+						}
+					})
 					.appendTo($navbar);
 			});
 		
@@ -102,7 +113,11 @@
 		}
 		
 		plugin.timer = setInterval(plugin.gotoSlide, plugin.options.animationSpeed, {'data':{'plugin': plugin, 'slide': 'right'}});
-		
+
+		if (event.type === 'focusout') {
+			plugin.element.removeAttr('aria-live');
+		}
+
 	};
 	
 	/** 
@@ -117,7 +132,11 @@
 		var plugin = event.data.plugin;
 		clearInterval(plugin.timer);
 		plugin.timer = null;
-		
+
+		if (event.type === 'focusin') {
+			plugin.element.attr({'aria-live': 'polite'});
+		 }
+
 	};
 	
 	/** 
