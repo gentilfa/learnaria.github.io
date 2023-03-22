@@ -12,9 +12,9 @@
 			
 			$(document).ready(function() {
 				
-				$('.italic').ik_togglebutton({'label': 'italic', 'onToggle': buttonAction });
-				$('.bold').ik_togglebutton({'label': 'bold', 'onToggle': buttonAction });
-				$('.underline').ik_togglebutton({'label': 'underline', 'onToggle': buttonAction });
+				$('.italic').ik_togglebutton({'label': 'italic', 'onToggle': buttonAction});
+				$('.bold').ik_togglebutton({'label': 'bold', 'onToggle': buttonAction});
+				$('.underline').ik_togglebutton({'label': 'underline', 'onToggle': buttonAction});
 				
 			});
 			
@@ -25,7 +25,9 @@
 				$elem = plugin.element;
 				label = plugin.options.label;
 				state = plugin.options.isPressed ? 'pressed' : 'not pressed';
-								
+				
+				$('.'+label).attr("aria-pressed", plugin.options.isPressed);
+				
 				console.log(label + ' button is ' + state);
 			}
 			
@@ -36,9 +38,9 @@
 			<a href="index.html">&larr; Index</a>
 			<h1>Toggle Button</h1>
 			<div class="buttongroup">
-				<div aria-label="Testo Corsivo"  class="toggle italic">I</div>
-				<div aria-label="Testo Grassetto" class="toggle bold">B</div>
-				<div aria-label="Testo Sottolineato" class="toggle underline">U</div>
+				<div role="button" tabindex="1" aria-label="Testo Corsivo"  class="toggle italic">I</div>
+				<div role="button" tabindex="2" aria-label="Testo Grassetto" class="toggle bold">B</div>
+				<div role="button" tabindex="3" aria-label="Testo Sottolineato" class="toggle underline">U</div>
 			</div>
 		</main>
 	</body>
