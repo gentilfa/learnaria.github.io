@@ -30,7 +30,9 @@ var pluginName = "ik_sortable",
 			
 			$(el).attr({
 				'draggable': true,
-				'id': id + '_' + i
+				'id': id + '_' + i,
+				'tabindex': 0,
+				'aria-label': 'Elemento '+el.textContent+'. Premere Invio per spostare.'
 			});
 		})
 		.on('dragstart', {'plugin': plugin}, plugin.onDragStart)
@@ -38,11 +40,37 @@ var pluginName = "ik_sortable",
 		.on('dragend', {'plugin': plugin}, plugin.onDragEnd)
 		.on('dragenter', {'plugin': plugin}, plugin.onDragEnter)
 		.on('dragover', {'plugin': plugin}, plugin.onDragOver)
-		.on('dragleave', {'plugin': plugin}, plugin.onDragLeave);
-		
+		.on('dragleave', {'plugin': plugin}, plugin.onDragLeave)
+		.on('keydown',{'plugin': plugin}, plugin.onKeyDown);
 		
 	};
 	
+	Plugin.prototype.onKeyDown = function (event) {
+		
+		var plugin, $me;
+		
+		var code = event.originalEvent.code;
+
+		plugin = event.data.plugin;
+		event = event.originalEvent || event;
+		$me = $(event.currentTarget);
+		
+		if(code == 'ArrowDown'){
+			if($me.next()){
+				$me.insertAfter($me.next());
+				$me.focus();
+			}
+		}else if(code == 'ArrowUp'){
+			if($me.prev()){
+				//$me.insertBefore(plugin.element.children('li')[plugin.items.index(event.currentTarget)-1]); //funziona anche così
+				$me.insertBefore($me.prev());
+				$me.focus();
+			}
+		}
+		plugin.resetNumbering(plugin);
+		
+	};
+
 	// dragged item
 	
 	Plugin.prototype.onDragStart = function (event) {
