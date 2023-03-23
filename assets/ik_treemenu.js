@@ -64,9 +64,13 @@
 				var $me;
 				
 				$me = $(el);
-				
+
 				$me.attr({
-					'id': id + '_menuitem_' + i
+					'id': id + '_menuitem_' + i,
+					'role':'treeitem',
+					'aria-level': $me.parents('ul').length,
+					'aria-setsize': $me.siblings().length + 1,
+					'aria-posinset': $me.index() + 1
 					});
 				
 				$($me.contents()[0]).wrap('<span></span>'); // wrap text element of each treitem with span element
@@ -91,10 +95,28 @@
 				}
 			
 			})
-			.on('click', {'plugin': plugin}, plugin.onClick);
+			.on('click', {'plugin': plugin}, plugin.onClick)
+			.on('onkeydown', {'plugin': plugin}, plugin.onKeyDown);
 		
 	};
 	
+
+	Plugin.prototype.onKeyDown = function (event) {
+		
+		//TODO da completare
+
+		console.log(event.originalEvent.code);
+		
+		var plugin = event.data.plugin,
+			$me = $(event.currentTarget);
+		
+		event.preventDefault();
+		event.stopPropagation();
+		
+		plugin.toggleSubmenu($me);
+		plugin.selectItem($me, plugin);
+	};
+
 	/** 
 	 * Selects treeitem.
 	 * 
