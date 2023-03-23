@@ -31,15 +31,17 @@
 		this.element
 			.attr({
 				'id': id,
+				'tabindex':-1
 			})
 			.addClass('ik_progressbar')
-      ;
-		
+			
 		this.fill = $('<div/>')
-			.addClass('ik_fill');
+			.addClass('ik_fill')
+			.attr('role','progressbar');
 			
 		this.notification = $('<div/>') // add div element to be used to notify about the status of download
 			.addClass('ik_readersonly')
+			.attr({'aria-live':'assertive','aria-atomic':'addiction','aria-hidden':'true'})
 			.appendTo(this.element);
 
 		$('<div/>')
@@ -98,7 +100,7 @@
 		this.element
 			.data({ // inaccessible
 				'value': parseInt(val) 
-			}) 
+			}).attr({'aria-valuenow': this.getPercent() })
       ;
 		
 		this.updateDisplay();

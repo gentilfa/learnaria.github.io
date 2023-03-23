@@ -60,10 +60,11 @@
 			<p>
 				<div id="pb_lbl">Click on <strong>Run Demo</strong> to simulate download.</div>
 			</p>
-			<p>
-				<div id="pb"></div>
+			<p tabindex="-1">
+				<div id="pb" role="region" aria-valuemin="0"
+				aria-valuemax="100"></div>
 			</p>
-			<button id="btnTest" onclick="runTest(event);">Run Demo</button>
+			<button id="btnTest" onclick="runTest(event);" title="Demo Run">Run Demo</button>
 		</main>
 	</body>
 </html>
